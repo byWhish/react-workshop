@@ -1,21 +1,26 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
+import RenderCount from '../components/RenderCount';
 
-let renders = 0;
+const apiCall = x => alert(x);
 
 export default () => {
   const [count, setCount] = useState(0);
 
-  const handleOnClick = () => {
-    setCount(count + 1)
-  } 
+  const onClickCount = () => {
+    setCount(count + 1);
+  };
 
-  useEffect(() => {
-    setCount(count + 1)
-  }, [])
+  const onClickRequest = () => {
+    apiCall(count);
+  };
 
-  renders+=1;
-
-  return( 
-    <button onClick={handleOnClick} >{count} {countPlusOne}</button>
-  )
+    return( 
+      <div className="container">
+        <RenderCount />
+        <div className="output">
+          <button onClick={onClickCount}>Counter</button>
+          <button onClick={onClickRequest}>Submit</button>
+        </div>
+      </div>
+    )
 }

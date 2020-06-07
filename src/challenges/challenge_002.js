@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
-
-let renders = 0;
+import RenderCount from '../components/RenderCount';
 
 export default () => {
   const [text, setText] = useState('');
 
   useEffect(() => {
-    setText('hola');
+    setText('Tita');
   })
 
   useEffect(() => {
-    setText('chau')
+    setText('Rodesia')
   }, [])
 
-  renders+=1;
-
   return( 
-    <div>{text} {renders}</div>
+    <div className="container">
+      <RenderCount />
+      <div className="output">{text}</div>
+    </div>
   )
 }

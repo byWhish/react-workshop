@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import RenderCount from '../components/RenderCount';
 
+const apiCall = () => Promise.resolve(); 
+
 export default () => {
   const [text, setText] = useState('');
 
   useEffect(() => {
-    setText('Tita');
+    apiCall();
   });
 
   useEffect(() => {
-    setText('Rodesia')
+    apiCall();
   });
 
   useEffect(() => {
-    setText('Toblerone')
+    apiCall();
   });
 
   useEffect(() => {
-    setText('Tofi')
+    apiCall();
   });
 
   return( 
