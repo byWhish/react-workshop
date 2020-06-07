@@ -25,4 +25,4 @@ class ContextComponent extends Component {
     }
 };
 
-export default FetchComponent;
+export default ContextComponent;

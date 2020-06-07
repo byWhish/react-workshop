@@ -35,7 +35,7 @@ class FetchComponent extends Component {
         fetchClient('/data')
             .then((response) => {
                 this.setState({
-                    data: respo,
+                    data: response,
                     status: 'success',
                 })
             })

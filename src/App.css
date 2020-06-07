@@ -7,10 +7,12 @@ body {
   display: flex;
   flex-direction: row;
   background-color: black;
+  color: white;
 }
 
 img {
   width: 500px;
+  margin: 0 auto;
 }
 
 button {
@@ -21,6 +23,10 @@ button {
   border-radius: 10px;
   cursor: pointer;
   margin: 10px 0;
+}
+
+button:focus {
+  outline: none;
 }
 
 .renders {

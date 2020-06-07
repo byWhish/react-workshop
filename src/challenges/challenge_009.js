@@ -1,17 +1,18 @@
-import React, { useState, useEffect, Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import RenderCount from '../components/RenderCount';
 import Context from '../components/Context';
 
-const fetchClient = () => {
-    return Promise.resolve('data');
-};
-
-const FetchComponent = () => {
-    const { themes } = useContext();
+const ContextComponent = () => {
+    const { themes } = useContext(Context);
 
     return (
-        <button style={themes.dark}>Context</button>
+        <div className="container">
+            <RenderCount />
+            <div className="output" style={themes.dark}>
+                <div>Context</div>
+            </div>
+        </div>
     )
 };
 
-export default FetchComponent;
+export default ContextComponent;
