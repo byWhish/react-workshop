@@ -5,11 +5,11 @@ export default () => {
   const [text, setText] = useState('');
 
   useEffect(() => {
-    setText('hola');
+    setText('Tita');
   });
 
   useLayoutEffect(() => {
-    setText('chau')
+    setText('Rodesia')
   });
 
   return( 

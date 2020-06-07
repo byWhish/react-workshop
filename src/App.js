@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import './App.css';
 import Challenge000 from './challenges/challenge_000';
 import Challenge001 from './challenges/challenge_001';
@@ -21,15 +21,15 @@ const App = () => {
     </div>
     <div className="challenges">
       <div>Challenge {challenge}</div>
-      {{
-        0: <Challenge000 />,
-        1: <Challenge001 />,
-        2: <Challenge002 />,
-        3: <Challenge003 />,
-        4: <Challenge004 />,
-        5: <Challenge005 />,
+        {{
+          0: <Challenge000 />,
+          1: <Challenge001 />,
+          2: <Challenge002 />,
+          3: <Challenge003 />,
+          4: <Challenge004 />,
+          5: <Challenge005 />,
       }[challenge]}
-    </div>
+      </div>
     </div>
   );
 }
