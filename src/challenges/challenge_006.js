@@ -1,63 +1,35 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import RenderCount from '../components/RenderCount';
 
-const fetchClient = () => {
-    return Promise.resolve('data');
+const ContextComponent = () => {
+    const [data, setData] = useState('Rhodesia');
+
+    useEffect(() => {
+        setTimeout(() => setData('Tita'), 200)
+    })
+
+    useEffect(() => {
+        setTimeout(() => setData('Nugaton'), 200)
+    })
+
+    useEffect(() => {
+        setTimeout(() => setData('Toffi'), 400)
+    })
+
+    useEffect(() => {
+        setTimeout(() => setData('Holanda'), 400)
+    })
+
+    useEffect(() => {
+        setTimeout(() => setData('Marroc'), 500)
+    })
+
+    return (
+        <div className="container">
+            <RenderCount />
+            <div className="output">{data}</div>
+        </div>
+    )
 };
 
-class FetchComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: null,
-            status: null,
-        }
-    }
-
-    static getDerivedStateFromProps(props, state) {
-
-    }
-
-    componentDidMount() {
-        this.fetch()
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        this.fetch()
-    }
-
-    componentWillUnmount() {
-        this.fetch().cancel()
-    }
-
-    fetch = () => {
-        this.setState({status: 'loading'});
-        fetchClient('/data')
-            .then((response) => {
-                this.setState({
-                    data: response,
-                    status: 'success',
-                })
-            })
-            .catch(() => {
-                this.setState({status: 'error'})
-            })
-    };
-
-    render() {
-        const { data, status } = this.state;
-
-        if (status === 'loading') return <div>Loading</div>;
-
-        if (status === 'error') return <div>Loading</div>;
-
-        return (
-            <Fragment>
-                <button onClick={this.fetch}>Fetch</button>
-                <div>{data}</div>
-            </Fragment>
-        )
-    }
-}
-
-export default FetchComponent;
+export default ContextComponent;

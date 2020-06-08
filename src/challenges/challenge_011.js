@@ -1,35 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import RenderCount from '../components/RenderCount';
 
-const ContextComponent = () => {
-    const [data, setData] = useState('Rhodesia');
+const fetchClient = () => {
+    return Promise.resolve('data');
+};
 
-    useEffect(() => {
-        setTimeout(() => setData('Tita'), 100)
-    }, [])
+const FetchComponent = () => {
+    const [data, setData] = useState(null);
+    const [status, setStatus] = useState(null);
 
-    useEffect(() => {
-        setTimeout(() => setData('Nugaton'), 200)
-    }, [])
+    const fetch = () => {
+        setStatus('loading');
+        fetchClient('/data')
+            .then((response) => {
+                setData(response);
+                setStatus('success');
+            })
+            .catch(() => {
+                setStatus('error')
+            })
+    };
 
-    useEffect(() => {
-        setTimeout(() => setData('Toffi'), 300)
-    }, [])
+    useEffect(fetch);
 
-    useEffect(() => {
-        setTimeout(() => setData('Holanda'), 400)
-    }, [])
+    if (status === 'loading') return <div>Loading</div>;
 
-    useEffect(() => {
-        setTimeout(() => setData('Marroc'), 500)
-    }, [])
+    if (status === 'error') return <div>Loading</div>;
 
     return (
-        <div className="container">
-            <RenderCount />
-            <div className="output">{data}</div>
-        </div>
+        <Fragment>
+            <button onClick={this.fetch}>Fetch</button>
+            <div>{data}</div>
+        </Fragment>
     )
 };
 
-export default ContextComponent;
+export default FetchComponent;

@@ -1,33 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import RenderCount from '../components/RenderCount';
+import Context, { useThemeContext } from '../components/Context';
 
 const ContextComponent = () => {
-    const [data, setData] = useState('Rhodesia');
-
-    useEffect(() => {
-        setTimeout(() => setData('Tita'), 200)
-    })
-
-    useEffect(() => {
-        setTimeout(() => setData('Nugaton'), 200)
-    })
-
-    useEffect(() => {
-        setTimeout(() => setData('Toffi'), 400)
-    })
-
-    useEffect(() => {
-        setTimeout(() => setData('Holanda'), 400)
-    })
-
-    useEffect(() => {
-        setTimeout(() => setData('Marroc'), 500)
-    })
+    const { dark, light } = useThemeContext();
 
     return (
         <div className="container">
             <RenderCount />
-            <div className="output">{data}</div>
+            <div className="output" style={dark}>
+                <div>Context</div>
+            </div>
         </div>
     )
 };

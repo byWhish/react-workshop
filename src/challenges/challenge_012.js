@@ -1,35 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { createContext, Component } from 'react';
 import RenderCount from '../components/RenderCount';
+import Context from '../components/Context';
 
-const ContextComponent = () => {
-    const [data, setData] = useState('Rhodesia');
-
-    useEffect(() => {
-        setTimeout(() => setData('Tita'), 200)
-    }, [])
-
-    useEffect(() => {
-        setTimeout(() => setData('Nugaton'), 200)
-    }, [])
-
-    useEffect(() => {
-        setTimeout(() => setData('Toffi'), 400)
-    }, [])
-
-    useEffect(() => {
-        setTimeout(() => setData('Holanda'), 400)
-    }, [])
-
-    useEffect(() => {
-        setTimeout(() => setData('Marroc'), 500)
-    }, [])
-
-    return (
-        <div className="container">
-            <RenderCount />
-            <div className="output">{data}</div>
-        </div>
-    )
+class ContextComponent extends Component {
+    render() {
+        return (
+            <Context.Consumer>
+                {({ themes }) => (
+                    <div className="container">
+                        <RenderCount />
+                        <div className="output" style={themes.dark}>Context</div>
+                    </div>
+                )}
+            </Context.Consumer>
+        )
+    }
 };
 
 export default ContextComponent;

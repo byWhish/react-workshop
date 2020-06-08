@@ -1,38 +1,48 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import RenderCount from '../components/RenderCount';
 
-const fetchClient = () => {
-    return Promise.resolve('data');
-};
-
-const FetchComponent = () => {
+const InnerComponent = ({ drill }) => {
     const [data, setData] = useState(null);
-    const [status, setStatus] = useState(null);
 
-    const fetch = () => {
-        setStatus('loading');
-        fetchClient('/data')
-            .then((response) => {
-                setData(response);
-                setStatus('success');
-            })
-            .catch(() => {
-                setStatus('error')
-            })
-    };
+    useEffect(() => {
+        setData('Toblerone')
+    }, []);
+    
+    return (
+    <div className="container">
+        <RenderCount />
+        <div className="output">
+        {drill}
+        </div>
+    </div>
+  )}
+  
+  const InnerWrapper = ({ drill }) => (
+    <InnerComponent drill={drill} />
+  )
+  
+  const Wrapper = ({ drill }) => (
+    <InnerWrapper drill={drill} />
+  )
+  
+  const Container = ({ drill }) => {
+    const [data, setData] = useState(null);
 
-    useEffect(fetch);
-
-    if (status === 'loading') return <div>Loading</div>;
-
-    if (status === 'error') return <div>Loading</div>;
+    useEffect(() => {
+        setTimeout(() => setData('Tita'), 1000)
+    }, []);
 
     return (
-        <Fragment>
-            <button onClick={this.fetch}>Fetch</button>
-            <div>{data}</div>
-        </Fragment>
+        <Wrapper drill={drill} />
+        )
+    }
+
+const ContextComponent = () => {
+    const [drill, setDrill] = useState('Rhodesia');
+
+    return (
+        <Container drill={drill} />
     )
 };
 
-export default FetchComponent;
+export default ContextComponent;

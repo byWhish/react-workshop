@@ -1,26 +1,35 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import RenderCount from '../components/RenderCount';
 
-const apiCall = x => alert(x);
+const ContextComponent = () => {
+    const [data, setData] = useState('Rhodesia');
 
-export default () => {
-    const count = useRef(0);
+    useEffect(() => {
+        setTimeout(() => setData('Tita'), 200)
+    }, [])
 
-    const onClickCount = () => {
-        count.current++;
-    };
+    useEffect(() => {
+        setTimeout(() => setData('Nugaton'), 200)
+    }, [])
 
-    const onClickRequest = () => {
-        apiCall(count.current);
-    };
+    useEffect(() => {
+        setTimeout(() => setData('Toffi'), 400)
+    }, [])
 
-    return( 
+    useEffect(() => {
+        setTimeout(() => setData('Holanda'), 400)
+    }, [])
+
+    useEffect(() => {
+        setTimeout(() => setData('Marroc'), 500)
+    }, [])
+
+    return (
         <div className="container">
-          <RenderCount />
-          <div className="output">
-            <button onClick={onClickCount}>Counter</button>
-            <button onClick={onClickRequest}>Submit</button>
-          </div>
+            <RenderCount />
+            <div className="output">{data}</div>
         </div>
-      )
-}
+    )
+};
+
+export default ContextComponent;

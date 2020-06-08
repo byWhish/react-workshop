@@ -1,48 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component, Fragment } from 'react';
 import RenderCount from '../components/RenderCount';
 
-const InnerComponent = ({ drill }) => {
-    const [data, setData] = useState(null);
-
-    useEffect(() => {
-        setData('Toblerone')
-    }, []);
-    
-    return (
-    <div className="container">
-        <RenderCount />
-        <div className="output">
-        {drill}
-        </div>
-    </div>
-  )}
-  
-  const InnerWrapper = ({ drill }) => (
-    <InnerComponent drill={drill} />
-  )
-  
-  const Wrapper = ({ drill }) => (
-    <InnerWrapper drill={drill} />
-  )
-  
-  const Container = ({ drill }) => {
-    const [data, setData] = useState(null);
-
-    useEffect(() => {
-        setTimeout(() => setData('Tita'), 1000)
-    }, []);
-
-    return (
-        <Wrapper drill={drill} />
-        )
-    }
-
-const ContextComponent = () => {
-    const [drill, setDrill] = useState('Rhodesia');
-
-    return (
-        <Container drill={drill} />
-    )
+const fetchClient = () => {
+    return Promise.resolve('data');
 };
 
-export default ContextComponent;
+class FetchComponent extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: null,
+            status: null,
+        }
+    }
+
+    static getDerivedStateFromProps(props, state) {
+
+    }
+
+    componentDidMount() {
+        this.fetch()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.fetch()
+    }
+
+    componentWillUnmount() {
+        this.fetch().cancel()
+    }
+
+    fetch = () => {
+        this.setState({status: 'loading'});
+        fetchClient('/data')
+            .then((response) => {
+                this.setState({
+                    data: response,
+                    status: 'success',
+                })
+            })
+            .catch(() => {
+                this.setState({status: 'error'})
+            })
+    };
+
+    render() {
+        const { data, status } = this.state;
+
+        if (status === 'loading') return <div>Loading</div>;
+
+        if (status === 'error') return <div>Loading</div>;
+
+        return (
+            <Fragment>
+                <button onClick={this.fetch}>Fetch</button>
+                <div>{data}</div>
+            </Fragment>
+        )
+    }
+}
+
+export default FetchComponent;
