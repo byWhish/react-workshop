@@ -9,7 +9,11 @@ export default () => {
   })
 
   useEffect(() => {
-    setText('Rodesia')
+    setText('Rhodesia');
+  }, [])
+
+  useEffect(() => {
+    setText('Toblerone');
   }, [])
 
   return( 

@@ -4,7 +4,7 @@ import RenderCount from '../components/RenderCount';
 const apiCall = () => Promise.resolve(); 
 
 export default () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState('Tita');
 
   useEffect(() => {
     apiCall();

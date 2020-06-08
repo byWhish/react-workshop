@@ -10,8 +10,13 @@ import Challenge006 from './challenges/challenge_006';
 import Challenge007 from './challenges/challenge_007';
 import Challenge008 from './challenges/challenge_008';
 import Challenge009 from './challenges/challenge_009';
+import Challenge010 from './challenges/challenge_010';
+import Challenge011 from './challenges/challenge_011';
+import Challenge012 from './challenges/challenge_012';
+import Challenge013 from './challenges/challenge_013';
 
-const challenges = Array(10).fill(0);
+
+const challenges = Array(14).fill(0);
 
 const App = () => {
   const [challenge, setChallenge] = useState(0);
@@ -36,6 +41,10 @@ const App = () => {
           7: <Challenge007 />,
           8: <Challenge008 />,
           9: <Challenge009 />,
+          10: <Challenge010 />,
+          11: <Challenge011 />,
+          12: <Challenge012 />,
+          13: <Challenge013 />,
       }[challenge]}
       <img src='/img/Banner.png' />
       </div>

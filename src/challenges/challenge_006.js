@@ -14,7 +14,7 @@ class FetchComponent extends Component {
         }
     }
 
-    static getDerivedStateFromProps() {
+    static getDerivedStateFromProps(props, state) {
 
     }
 

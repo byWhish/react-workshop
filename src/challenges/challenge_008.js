@@ -1,26 +1,18 @@
 import React, { createContext, Component } from 'react';
 import RenderCount from '../components/RenderCount';
-
-const Context = createContext({});
-
-const themes = {}
-
-const InnerComponent = ({ context }) => {
-    return <div style={context.style}></div>
-}
+import Context from '../components/Context';
 
 class ContextComponent extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
-            <Context.Provider value={themes}>
-                <Context.Consumer>
-                    <InnerComponent />                    
-                </Context.Consumer>
-            </Context.Provider>
+            <Context.Consumer>
+                {({ themes }) => (
+                    <div className="container">
+                        <RenderCount />
+                        <div className="output" style={themes.dark}>Context</div>
+                    </div>
+                )}
+            </Context.Consumer>
         )
     }
 };
