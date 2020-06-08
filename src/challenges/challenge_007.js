@@ -23,7 +23,7 @@ const InnerComponent = ({ drill }) => {
   
   const Wrapper = ({ drill }) => (
     <InnerWrapper drill={drill} />
-  )
+  ) 
   
   const Container = ({ drill }) => {
     const [data, setData] = useState(null);
