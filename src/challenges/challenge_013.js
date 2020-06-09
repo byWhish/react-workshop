@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import RenderCount from '../components/RenderCount';
-import Context, { useThemeContext } from '../components/Context';
+import Context from '../components/Context';
 
 const ContextComponent = () => {
-    const { dark, light } = useThemeContext();
+    const { themes } = useContext(Context);
 
     return (
         <div className="container">
             <RenderCount />
-            <div className="output" style={dark}>
+            <div className="output" style={themes.dark}>
                 <div>Context</div>
             </div>
         </div>

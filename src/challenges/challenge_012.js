@@ -9,7 +9,9 @@ class ContextComponent extends Component {
                 {({ themes }) => (
                     <div className="container">
                         <RenderCount />
-                        <div className="output" style={themes.dark}>Context</div>
+                        <div className="output" style={themes.dark}>
+                            Context
+                        </div>
                     </div>
                 )}
             </Context.Consumer>

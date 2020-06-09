@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react';
 import './App.css';
+import Banner from './components/Banner';
 import Challenge000 from './challenges/challenge_000';
 import Challenge001 from './challenges/challenge_001';
 import Challenge002 from './challenges/challenge_002';
@@ -19,7 +20,7 @@ import Challenge013 from './challenges/challenge_013';
 const challenges = Array(14).fill(0);
 
 const App = () => {
-  const [challenge, setChallenge] = useState(0);
+  const [challenge, setChallenge] = useState(' ');
   
   return (
     <div className="App">
@@ -31,6 +32,7 @@ const App = () => {
     <div className="challenges">
       <div>Challenge {challenge}</div>
         {{
+          ' ': <Banner />,
           0: <Challenge000 />,
           1: <Challenge001 />,
           2: <Challenge002 />,

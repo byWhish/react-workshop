@@ -1,5 +1,9 @@
 const { useState } = require('react');
 
+const fetchClient = () => {
+    return Promise.resolve('data');
+};
+
 const useFetch = () => {
     const [status, setStatus] = useState(null);
     const [data, setData] = useState(null);
