@@ -15,9 +15,10 @@ import Challenge010 from './challenges/challenge_010';
 import Challenge011 from './challenges/challenge_011';
 import Challenge012 from './challenges/challenge_012';
 import Challenge013 from './challenges/challenge_013';
+import Challenge015 from './challenges/challenge_015';
 
 
-const challenges = Array(14).fill(0);
+const challenges = Array(16).fill(0);
 
 const App = () => {
   const [challenge, setChallenge] = useState(' ');
@@ -47,6 +48,7 @@ const App = () => {
           11: <Challenge011 />,
           12: <Challenge012 />,
           13: <Challenge013 />,
+          15: <Challenge015 />,
       }[challenge]}
       <img src='/img/Banner.png' />
       </div>

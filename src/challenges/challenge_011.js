@@ -29,7 +29,7 @@ const FetchComponent = () => {
 
     return (
         <Fragment>
-            <button onClick={this.fetch}>Fetch</button>
+            <button onClick={fetch}>Fetch</button>
             <div>{data}</div>
         </Fragment>
     )
